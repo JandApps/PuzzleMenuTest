@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="22dp"
+        android:layout_marginTop="25dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tvDificulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/difficult_title"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <RadioGroup
+            android:id="@+id/rbDificultMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" >
+
+            <RadioButton
+                android:id="@+id/rbEasy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="@string/difficult_easy" />
+
+            <RadioButton
+                android:id="@+id/rbMedium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/difficult_medium" />
+
+            <RadioButton
+                android:id="@+id/rbHard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/difficult_hard" />
+        </RadioGroup>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivChoose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/linearLayout1"
+        android:layout_centerVertical="true"
+        android:src="@drawable/choose" />
+
+    <TextView
+        android:id="@+id/tvChoose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/linearLayout1"
+        android:text="@string/choose_picture"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/ivRandom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/ivChoose"
+        android:layout_below="@+id/ivChoose"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/random" />
+
+    <TextView
+        android:id="@+id/tvRandom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvChoose"
+        android:layout_alignTop="@+id/ivRandom"
+        android:layout_marginTop="14dp"
+        android:text="@string/random_picture"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/ivGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/ivRandom"
+        android:layout_marginBottom="19dp"
+        android:src="@drawable/gallery"
+        android:alpha="0.3" />
+
+    <TextView
+        android:id="@+id/tvGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tvRandom"
+        android:layout_alignTop="@+id/ivGallery"
+        android:layout_marginTop="17dp"
+        android:enabled="false"
+        android:text="@string/gallery"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>
