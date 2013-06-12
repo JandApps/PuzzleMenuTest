@@ -9,9 +9,10 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +25,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setFullscreen();
 		setContentView(R.layout.main_menu);
 
 		loadFont("Crystal.otf");
@@ -36,6 +38,12 @@ public class MainActivity extends Activity {
 			imageView.setOnClickListener(getOnClickListener(this));
 		}
 	}
+	
+	public void setFullscreen() {
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+	}
+	
 
 	public OnClickListener getOnClickListener(final Context context) {
 
@@ -95,8 +103,7 @@ public class MainActivity extends Activity {
 	}
 
 	private void loadFont(String fontName) {
-		Typeface font = Typeface.createFromAsset(getAssets(), "fonts/"
-				+ fontName);
+		Typeface font = Typeface.createFromAsset(getAssets(), "fonts/"+ fontName);
 		ArrayList<TextView> textViews = getTextViews(textViewsIds);
 
 		for (TextView textView : textViews) {

@@ -7,24 +7,24 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class NewGameActivity extends Activity {
-	private static int[] textViewsIds = { R.id.tvDificulty, R.id.tvChoose, R.id.tvRandom, R.id.tvGallery };
+	private static int[] textViewsIds = { R.id.tvDificulty, R.id.tvGallery };
 	private static int[] rbIds = { R.id.rbEasy, R.id.rbMedium, R.id.rbHard };
-	private static int[] imageViewIds = {R.id.ivChoose, R.id.ivRandom};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setFullscreen();
 		setContentView(R.layout.new_game);
 		loadFont("Crystal.otf");
 		
@@ -33,10 +33,11 @@ public class NewGameActivity extends Activity {
 				textView.setOnClickListener(getOnClickListener(getApplicationContext()));
 			}
 		}
-		
-		for(ImageView imageView : getImageViews(imageViewIds)) {
-			imageView.setOnClickListener(getOnClickListener(this));
-		}
+	}
+	
+	public void setFullscreen() {
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 	}
 
 	public OnClickListener getOnClickListener(final Context context) {
@@ -49,17 +50,6 @@ public class NewGameActivity extends Activity {
 				int id = v.getId();
 
 				switch (id) {
-				case R.id.tvChoose:
-				case R.id.ivChoose: {
-					Toast.makeText(context, "Choosing picture...", Toast.LENGTH_SHORT).show();
-					break;
-				}
-
-				case R.id.tvRandom:
-				case R.id.ivRandom: {
-					Toast.makeText(context, "Random picture...", Toast.LENGTH_SHORT).show();
-					break;
-				}
 
 				case R.id.tvGallery:
 				case R.id.ivGallery: {
@@ -97,6 +87,8 @@ public class NewGameActivity extends Activity {
 		ArrayList<TextView> textViewList = new ArrayList<TextView>();
 
 		for (int tvId : textViewsIds) {
+			Log.d("SEVAK_DEBUG", String.valueOf(tvId));
+				
 			TextView textViews = (TextView) findViewById(tvId);
 			textViewList.add(textViews);
 
@@ -114,18 +106,6 @@ public class NewGameActivity extends Activity {
 		}
 
 		return rbList;
-	}
-	
-	private ArrayList<ImageView> getImageViews(int[] imageViewIds) {
-		ArrayList<ImageView> imageViewList = new ArrayList<ImageView>();
-
-		for (int ivId : imageViewIds) {
-			ImageView imageView = (ImageView) findViewById(ivId);
-			imageViewList.add(imageView);
-
-		}
-
-		return imageViewList;
 	}
 
 }
