@@ -7,12 +7,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.puzzlemenutest.R;
-import com.example.puzzlemenutest.utils.Util;
+import com.example.puzzlemenutest.util.Util;
 
 public class MainActivity extends Activity {
 	
 	private static Typeface textFont;
-	private static Handler listener;
+	private static OnMainMenuClickListener listener;
 	
 	private int[] textViewIds = {R.id.tvPlay, R.id.tvLoad, R.id.tvRating, R.id.tvPaid };
 	private int[] imageViewIds = {R.id.ivPlay, R.id.ivLoad, R.id.ivRating, R.id.ivPaid};
@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
 	}
 	
 	private void initMenuViews(){
-		listener = new Handler(this);
+		listener = new OnMainMenuClickListener(this);
 		textFont = Util.loadFont(this, "Crystal.otf");
 		
 		initTextViews();

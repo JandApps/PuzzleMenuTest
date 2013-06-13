@@ -1,4 +1,4 @@
-package com.example.puzzlemenutest.refactor.main_activity;
+package com.example.puzzlemenutest.menus;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,13 +9,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.example.puzzlemenutest.R;
-import com.example.puzzlemenutest.refactor.new_game_activity.NewGameActivity;
 
-public class Handler implements OnClickListener {
+public class OnMainMenuItemClickListener implements OnClickListener {
 	private Context context;
 	private Animation anim;
 	
-	public Handler(Context context) {
+	public OnMainMenuItemClickListener(Context context) {
 		this.context = context;
 		anim = AnimationUtils.loadAnimation(context, R.anim.click_anim);
 	}
@@ -28,7 +27,7 @@ public class Handler implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.tvPlay:
 		case R.id.ivPlay: 
-			Intent intent = new Intent(context, NewGameActivity.class);
+			Intent intent = new Intent(context, NewGameMenuActivity.class);
 			context.startActivity(intent);
 			break;
 		

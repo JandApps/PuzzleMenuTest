@@ -1,4 +1,4 @@
-package com.example.puzzlemenutest.utils;
+package com.example.puzzlemenutest.util;
 import android.content.Context;
 import android.graphics.Typeface;
 

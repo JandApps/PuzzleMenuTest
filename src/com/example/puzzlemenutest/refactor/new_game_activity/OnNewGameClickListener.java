@@ -8,14 +8,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 import com.example.puzzlemenutest.R;
 
-public class Handler implements OnClickListener {
+public class OnNewGameClickListener implements OnClickListener {
 	// по умолчанию первая картинка
 	private static int clickedImageId = 1;
 	
 	private Context context;
 	private Animation anim;
 	
-	public Handler(Context context) {
+	public OnNewGameClickListener(Context context) {
 		this.context = context;
 		anim = AnimationUtils.loadAnimation(context, R.anim.click_anim);
 	}

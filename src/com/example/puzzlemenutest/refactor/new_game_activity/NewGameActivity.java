@@ -8,11 +8,11 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.puzzlemenutest.R;
-import com.example.puzzlemenutest.utils.Util;
+import com.example.puzzlemenutest.util.Util;
 
 public class NewGameActivity extends Activity {
 	
-	private static Handler listener;
+	private static OnNewGameClickListener listener;
 	private static Typeface textFont;
 
 	private int[] textViewsIds = { R.id.tvDificulty, R.id.tvGallery };
@@ -30,7 +30,7 @@ public class NewGameActivity extends Activity {
 	}
 
 	private void initMenuViews() {
-		listener = new Handler(this);
+		listener = new OnNewGameClickListener(this);
 		textFont = Util.loadFont(this, "Crystal.otf");
 		
 		initTextViews();
