@@ -3,79 +3,44 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivityRefactoring" >
-
-    <ImageView
-        android:id="@+id/ivPlay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/play" />
-
-    <ImageView
-        android:id="@+id/ivLoad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/ivPlay"
-        android:layout_below="@+id/ivPlay"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/load" />
-
-    <ImageView
-        android:id="@+id/ivRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/ivLoad"
-        android:layout_below="@+id/ivLoad"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/rating" />
-
-    <ImageView
-        android:id="@+id/ivPaid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ivRating"
-        android:layout_below="@+id/ivRating"
-        android:layout_marginTop="30dp"
-        android:src="@drawable/dollar" />
 
     <TextView
         android:id="@+id/tvPlay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ivPlay"
+        android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/ivPlay"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/ivPlay"
+        android:gravity="center_vertical"
         android:text="@string/new_game"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="25sp" />
+        android:textSize="25sp"/>
 
     <TextView
         android:id="@+id/tvLoad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/ivLoad"
+        android:layout_above="@+id/ivRating"
         android:layout_alignLeft="@+id/tvPlay"
-        android:layout_marginBottom="20dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/ivLoad"
+        android:gravity="center_vertical"
         android:text="@string/load_game"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="25sp" />
+        android:textSize="25sp"/>
 
     <TextView
         android:id="@+id/tvRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ivRating"
         android:layout_alignLeft="@+id/tvLoad"
+        android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/ivRating"
-        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
         android:text="@string/rating"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="25sp" />
@@ -84,11 +49,50 @@
         android:id="@+id/tvPaid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ivPaid"
         android:layout_alignLeft="@+id/tvRating"
+        android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/ivPaid"
-        android:layout_marginTop="20dp"
+        android:gravity="center_vertical"
         android:text="@string/paid_features"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="25sp" />
+
+    <ImageView
+        android:id="@+id/ivPaid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/ivRating"
+        android:layout_below="@+id/ivRating"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/dollar" />
+
+    <ImageView
+        android:id="@+id/ivRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivLoad"
+        android:layout_marginTop="30dp"
+        android:layout_toLeftOf="@+id/tvPlay"
+        android:src="@drawable/rating" />
+
+    <ImageView
+        android:id="@+id/ivLoad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ivRating"
+        android:layout_below="@+id/ivPlay"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/load" />
+
+    <ImageView
+        android:id="@+id/ivPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="40dp"
+        android:src="@drawable/play" />
 
 </RelativeLayout>

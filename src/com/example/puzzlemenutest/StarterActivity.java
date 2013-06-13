@@ -1,8 +1,10 @@
 package com.example.puzzlemenutest;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,10 +34,12 @@ public class StarterActivity extends Activity {
 		textView = (TextView) findViewById(R.id.textView);
 		imageView = (ImageView) findViewById(R.id.imageView);
 	}
-	
+
+	@SuppressLint("NewApi")
 	private void setPreview() {
 		Bitmap bitmap = (Bitmap) SaverLoader.load("bitmap");
-		imageView.setBackgroundDrawable(new BitmapDrawable(bitmap));
+		Drawable drawable = new BitmapDrawable(getResources(), bitmap);
+		imageView.setBackground(drawable);
 	}
 
 	private void setListeners() {
@@ -45,12 +49,13 @@ public class StarterActivity extends Activity {
 				onStartGame();
 			}
 		});
-		puzzlesView.addOnPuzzleAssembledListener(new OnPuzzleAssembledListener() {
-			@Override
-			public void onGameFinished() {
-				onPuzzleAssembled();
-			}
-		});
+		puzzlesView
+				.addOnPuzzleAssembledListener(new OnPuzzleAssembledListener() {
+					@Override
+					public void onGameFinished() {
+						onPuzzleAssembled();
+					}
+				});
 	}
 
 	private void onStartGame() {
@@ -63,27 +68,28 @@ public class StarterActivity extends Activity {
 
 	private void resetScreen(int previewVisibility, int puzzlesVisibility) {
 		changeVisibility(previewVisibility, textView, imageView);
-		changeVisibility(puzzlesVisibility, puzzlesView);		
+		changeVisibility(puzzlesVisibility, puzzlesView);
 	}
-	
+
 	private void setPuzzles() {
 		Bitmap bitmap = (Bitmap) SaverLoader.load("bitmap");
 		Dimension dim = (Dimension) SaverLoader.load("dim");
 		puzzlesView.set(bitmap, dim);
 	}
 
-	private void changeVisibility(int visibility, View...views) {
+	private void changeVisibility(int visibility, View... views) {
 		for (View each : views) {
 			each.setVisibility(visibility);
 		}
 	}
-	
+
 	private void onPreview() {
 		resetScreen(View.VISIBLE, View.INVISIBLE);
 	}
 
 	private void onPuzzleAssembled() {
-		Toast.makeText(StarterActivity.this, "Excellent", Toast.LENGTH_SHORT).show();
+		Toast.makeText(StarterActivity.this, "Excellent", Toast.LENGTH_SHORT)
+				.show();
 		puzzlesView.mix();
 		onPreview();
 	}
@@ -93,5 +99,5 @@ public class StarterActivity extends Activity {
 		super.onDestroy();
 		puzzlesView.releaseImageResources();
 	}
-	
+
 }

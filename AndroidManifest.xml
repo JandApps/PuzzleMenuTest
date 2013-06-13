@@ -6,14 +6,29 @@
 
     <uses-sdk
         android:minSdkVersion="8"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="16" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/puzzle"
-        android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
-        <activity android:name="StarterActivity"></activity>
+        android:label="@string/app_name" >
+        <activity
+            android:name="com.example.puzzlemenutest.menus.MainMenuActivity"
+            android:theme="@style/AppThemeCustomFont" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.puzzlemenutest.menus.NewGameMenuActivity"
+            android:theme="@style/AppThemeCustomFont" >
+        </activity>
+        <activity
+            android:name="com.example.puzzlemenutest.StarterActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
     </application>
 
 </manifest>

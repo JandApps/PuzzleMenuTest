@@ -37,6 +37,8 @@ public class PuzzlesView extends View {
 	private Collection<OnPuzzleAssembledListener> onPuzzleAssembledListeners;
 	
 	private Dimension dim;
+
+	private Matrix<Bitmap> startPuzzles;
 	
 	private Matrix<Bitmap> puzzles;
 	
@@ -49,8 +51,6 @@ public class PuzzlesView extends View {
 	private Point lastTouchedPoint;
 	
 	private Point draggedLeftUpper;
-	
-	private PuzzlesChecker puzzlesChecker;
 	
 	private Size puzzleSize;
 
@@ -106,7 +106,7 @@ public class PuzzlesView extends View {
 	
 	private void setDimension(Dimension dim) {
 		this.dim = dim;
-		puzzles = new Matrix<Bitmap>(dim);
+		startPuzzles = new Matrix<Bitmap>(dim);
 	}
 
 	private void setBitmap(Bitmap bitmap) {
@@ -114,7 +114,6 @@ public class PuzzlesView extends View {
 		calculatePuzzleSize();
 		fullImage = scaledToFullSize(bitmap);
 		cutIntoPuzzles();
-		puzzlesChecker = new PuzzlesChecker(puzzles);
 		mix();
 	}
 
@@ -135,12 +134,13 @@ public class PuzzlesView extends View {
 	}
 
 	private void cutIntoPuzzles() {
-		puzzles.forEach(new Matrix.OnEachHandler<Bitmap>() {
+		startPuzzles.forEach(new Matrix.OnEachHandler<Bitmap>() {
 			@Override
 			public void handle(Matrix<Bitmap> matrix, Position pos) {
 				matrix.set(pos, puzzleByPosition(pos));
 			}
 		});
+		puzzles = new Matrix<Bitmap>(startPuzzles);
 	}
 	
 	private Bitmap puzzleByPosition(Matrix.Position pos) {
@@ -368,9 +368,13 @@ public class PuzzlesView extends View {
 		nearestPosition = null;
 		draggingStopped();
 		invalidate();
-		if (puzzlesChecker.puzzleAssembled(puzzles)) {
+		if (puzzlesAssembled()) {
 			notifyThatPuzzleAssembled();
 		}
+	}
+	
+	private boolean puzzlesAssembled() {
+		return startPuzzles.equals(puzzles);
 	}
 		
 	private void notifyThatPuzzleAssembled() {
