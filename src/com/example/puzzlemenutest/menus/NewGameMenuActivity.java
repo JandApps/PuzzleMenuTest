@@ -15,7 +15,7 @@ import com.example.puzzlemenutest.GameActivity;
 import com.example.puzzlemenutest.util.Dimension;
 
 public class NewGameMenuActivity extends AbstractMenuActivity {
-	private int[] menuItemsTextViewsIds = { R.id.tvGallery };
+	private int[] menuItemsTextViewsIds = {};
 	private int[] menuItemsImageViewsIds = { R.id.ivGallery };
 	private int[] imageViewIds = { R.id.ivPreview_1, R.id.ivPreview_2,
 			R.id.ivPreview_3, R.id.ivPreview_4, R.id.ivPreview_5 };
@@ -57,7 +57,6 @@ public class NewGameMenuActivity extends AbstractMenuActivity {
 	}
 
 	private void disableExtraFeatures() {
-		findViewById(R.id.tvGallery).setEnabled(false);
 		findViewById(R.id.ivGallery).setEnabled(false);
 	}
 

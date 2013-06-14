@@ -18,7 +18,6 @@ public class OnNewGameMenuItemListener implements OnClickListener {
 
 	public void onClick(View v) {		
 		switch (v.getId()) {
-		case R.id.tvGallery:
 		case R.id.ivGallery: 
 			v.startAnimation(anim);
 			activity.onGallery();
