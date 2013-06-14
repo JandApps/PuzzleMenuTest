@@ -10,7 +10,7 @@ public class MainMenuActivity extends MenuActivity {
 
 	@Override
 	protected int getLayoutId() {
-		return R.layout.main_menu;
+		return R.layout.main_menu_activity;
 	}
 
 	@Override

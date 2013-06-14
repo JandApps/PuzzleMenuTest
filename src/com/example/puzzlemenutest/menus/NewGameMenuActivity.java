@@ -10,7 +10,7 @@ import android.widget.RadioGroup;
 import com.example.puzzlemenutest.DimensionLoader;
 import com.example.puzzlemenutest.R;
 import com.example.puzzlemenutest.SaverLoader;
-import com.example.puzzlemenutest.StarterActivity;
+import com.example.puzzlemenutest.GameActivity;
 import com.example.puzzlemenutest.util.Dimension;
 
 public class NewGameMenuActivity extends MenuActivity {
@@ -21,7 +21,7 @@ public class NewGameMenuActivity extends MenuActivity {
 
 	@Override
 	protected int getLayoutId() {
-		return R.layout.new_game;
+		return R.layout.new_game_menu_activity;
 	}
 
 	@Override
@@ -49,18 +49,14 @@ public class NewGameMenuActivity extends MenuActivity {
 	}
 
 	public void startGame(int imageId) {
-		DimensionLoader loader = new DimensionLoader(getResources());
-		Dimension dim = loader.dimension(getDifficultyName());
-
+		Dimension dim = dimensionByCurrentDifficulty();
 		Bitmap bitmap = BitmapFactory.decodeResource(getResources(), imageId);
 		startGame(bitmap, dim);
 	}
 
-	private void startGame(Bitmap bitmap, Dimension dim) {
-		SaverLoader.save("bitmap", bitmap);
-		SaverLoader.save("dim", dim);
-		Intent intent = new Intent(this, StarterActivity.class);
-		startActivity(intent);
+	private Dimension dimensionByCurrentDifficulty() {
+		DimensionLoader loader = new DimensionLoader(getResources());
+		return loader.dimension(getDifficultyName());
 	}
 
 	private String getDifficultyName() {
@@ -71,7 +67,16 @@ public class NewGameMenuActivity extends MenuActivity {
 		return difficultyName;
 	}
 
+	private void startGame(Bitmap bitmap, Dimension dim) {
+		SaverLoader.save("bitmap", bitmap);
+		SaverLoader.save("dim", dim);
+		Intent intent = new Intent(this, GameActivity.class);
+		startActivity(intent);
+	}
+
 	public void onGallery() {
-		// TODO: Предоставление пользователю возможности загрузки из галереи
+		// TODO: Открыть галерею, и если пользователь выберет изображение,
+		// начать игру с этим изображением, а если изображение не удовлетворяет критериям,
+		// то сообщить пользователю об этом
 	}
 }

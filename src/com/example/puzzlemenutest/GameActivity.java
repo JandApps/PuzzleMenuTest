@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.puzzlemenutest.util.Dimension;
 
-public class StarterActivity extends Activity {
+public class GameActivity extends Activity {
 	private TextView textView;
 	private ImageView imageView;
 	private PuzzlesView puzzlesView;
@@ -23,7 +23,7 @@ public class StarterActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_starter);
+		setContentView(R.layout.game_activity);
 		findViews();
 		setPreview();
 		setListeners();
@@ -88,7 +88,7 @@ public class StarterActivity extends Activity {
 	}
 
 	private void onPuzzleAssembled() {
-		Toast.makeText(StarterActivity.this, "Excellent", Toast.LENGTH_SHORT)
+		Toast.makeText(GameActivity.this, "Excellent", Toast.LENGTH_SHORT)
 				.show();
 		puzzlesView.mix();
 		onPreview();
