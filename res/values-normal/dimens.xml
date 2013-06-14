@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="text_size">25dp</dimen>
-    <dimen name="margin_left">25dp</dimen>
-    <dimen name="icon_margin_left">25dp</dimen>
+    <dimen name="margin_left">20dp</dimen>
+    <dimen name="icon_margin_left">20dp</dimen>
     <dimen name="icon_margin_top">40dp</dimen>
-    <dimen name="icon_between_margin">30dp</dimen>
+    <dimen name="icon_between_margin">20dp</dimen>
+    <dimen name="icon_size">80dp</dimen>
 </resources>
