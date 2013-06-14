@@ -60,8 +60,8 @@
 
     <ImageView
         android:id="@+id/ivPaid"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
         android:layout_alignRight="@+id/ivRating"
         android:layout_below="@+id/ivRating"
         android:layout_marginTop="@dimen/icon_between_margin"
@@ -69,8 +69,8 @@
 
     <ImageView
         android:id="@+id/ivRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
         android:layout_below="@+id/ivLoad"
         android:layout_marginTop="@dimen/icon_between_margin"
         android:layout_toLeftOf="@+id/tvPlay"
@@ -78,8 +78,8 @@
 
     <ImageView
         android:id="@+id/ivLoad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
         android:layout_alignLeft="@+id/ivRating"
         android:layout_below="@+id/ivPlay"
         android:layout_marginTop="@dimen/icon_between_margin"
@@ -87,8 +87,8 @@
 
     <ImageView
         android:id="@+id/ivPlay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/icon_size"
+        android:layout_height="@dimen/icon_size"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="@dimen/icon_margin_left"
