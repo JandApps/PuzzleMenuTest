@@ -1,5 +1,6 @@
 package com.example.puzzlemenutest;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -41,6 +42,7 @@ public class GameActivity extends Activity {
 		setPreview(drawable);
 	}
 
+	@SuppressLint("NewApi")
 	@SuppressWarnings("deprecation")
 	private void setPreview(Drawable drawable) {
 		if (Build.VERSION.SDK_INT < 16) {
