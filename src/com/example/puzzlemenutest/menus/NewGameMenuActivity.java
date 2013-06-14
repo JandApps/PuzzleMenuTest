@@ -14,7 +14,7 @@ import com.example.puzzlemenutest.SaverLoader;
 import com.example.puzzlemenutest.GameActivity;
 import com.example.puzzlemenutest.util.Dimension;
 
-public class NewGameMenuActivity extends MenuActivity {
+public class NewGameMenuActivity extends AbstractMenuActivity {
 	private int[] menuItemsTextViewsIds = { R.id.tvGallery };
 	private int[] menuItemsImageViewsIds = { R.id.ivGallery };
 	private int[] imageViewIds = { R.id.ivPreview_1, R.id.ivPreview_2,

@@ -6,7 +6,7 @@ import android.view.View.OnClickListener;
 import com.example.puzzlemenutest.PaymentUtils;
 import com.example.puzzlemenutest.R;
 
-public class MainMenuActivity extends MenuActivity {
+public class MainMenuActivity extends AbstractMenuActivity {
 
 	private int[] textViewsIds = { R.id.tvPlay, R.id.tvLoad, R.id.tvRating, R.id.tvPaid };
 	private int[] imageViewsIds = { R.id.ivPlay, R.id.ivLoad, R.id.ivRating, R.id.ivPaid };
