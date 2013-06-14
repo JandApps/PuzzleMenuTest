@@ -21,7 +21,7 @@ import com.example.puzzlemenutest.util.Dimension;
 
 public class NewGameMenuActivity extends AbstractMenuActivity {
 	private static final int PICK_IMAGE = 0;
-	private int[] menuItemsTextViewsIds = {};
+	private int[] menuItemsTextViewsIds = {R.id.textView};
 	private int[] menuItemsImageViewsIds = { R.id.ivGallery };
 	private int[] imageViewIds = { R.id.ivPreview_1, R.id.ivPreview_2,
 			R.id.ivPreview_3, R.id.ivPreview_4, R.id.ivPreview_5 };
@@ -63,7 +63,7 @@ public class NewGameMenuActivity extends AbstractMenuActivity {
 	}
 
 	private void disableExtraFeatures() {
-		findViewById(R.id.ivGallery).setEnabled(false);
+		findViewById(R.id.ivGallery).setEnabled(true);
 	}
 
 	public void startGame(int imageId) {
@@ -96,12 +96,14 @@ public class NewGameMenuActivity extends AbstractMenuActivity {
 		Intent intent = new Intent();
 		intent.setType("image/*");
 		intent.setAction(Intent.ACTION_GET_CONTENT);
-		startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+		startActivityForResult(Intent.createChooser(intent, "Select Picture"),
+				PICK_IMAGE);
 	}
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (resultCode == RESULT_OK && requestCode == PICK_IMAGE && data != null) {
+		if (resultCode == RESULT_OK && requestCode == PICK_IMAGE
+				&& data != null) {
 			Uri uri = data.getData();
 			if (uri != null) {
 				onImagePicked(uri);
