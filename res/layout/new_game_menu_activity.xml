@@ -65,6 +65,7 @@
         android:layout_marginTop="18dp"
         android:layout_toRightOf="@+id/linearLayout1"
         android:text="@string/gallery"
+        android:textColor="@color/gallery_text_color"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <HorizontalScrollView

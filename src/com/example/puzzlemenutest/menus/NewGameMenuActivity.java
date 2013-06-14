@@ -8,6 +8,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.puzzlemenutest.DimensionLoader;
+import com.example.puzzlemenutest.PaymentUtils;
 import com.example.puzzlemenutest.R;
 import com.example.puzzlemenutest.SaverLoader;
 import com.example.puzzlemenutest.GameActivity;
@@ -41,11 +42,23 @@ public class NewGameMenuActivity extends MenuActivity {
 
 	@Override
 	protected void otherActions() {
-		// TODO:
 		OnPickImageListener listener = new OnPickImageListener(this);
 		for (int id : imageViewIds) {
 			findViewById(id).setOnClickListener(listener);
 		}
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if (!PaymentUtils.extraFeaturesHaveBeenPaid()) {
+			disableExtraFeatures();
+		}
+	}
+
+	private void disableExtraFeatures() {
+		findViewById(R.id.tvGallery).setEnabled(false);
+		findViewById(R.id.ivGallery).setEnabled(false);
 	}
 
 	public void startGame(int imageId) {

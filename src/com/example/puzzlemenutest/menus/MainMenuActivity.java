@@ -1,10 +1,13 @@
 package com.example.puzzlemenutest.menus;
 
+import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.example.puzzlemenutest.PaymentUtils;
 import com.example.puzzlemenutest.R;
 
-public class MainMenuActivity extends MenuActivity {	
+public class MainMenuActivity extends MenuActivity {
+
 	private int[] textViewsIds = { R.id.tvPlay, R.id.tvLoad, R.id.tvRating, R.id.tvPaid };
 	private int[] imageViewsIds = { R.id.ivPlay, R.id.ivLoad, R.id.ivRating, R.id.ivPaid };
 
@@ -26,6 +29,19 @@ public class MainMenuActivity extends MenuActivity {
 	@Override
 	protected int[] getMenuItemsImagetViewsIds() {
 		return imageViewsIds;
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		if (PaymentUtils.extraFeaturesHaveBeenPaid()) {
+			hidePaidFeaturesItem();
+		}
+	}
+
+	private void hidePaidFeaturesItem() {
+		findViewById(R.id.ivPaid).setVisibility(View.INVISIBLE);
+		findViewById(R.id.tvPaid).setVisibility(View.INVISIBLE);
 	}
 
 }
