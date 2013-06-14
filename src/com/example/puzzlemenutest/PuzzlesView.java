@@ -85,10 +85,6 @@ public class PuzzlesView extends View {
 		setBitmap(bitmap);
 	}
 	
-	private boolean imageWasSet() {
-		return (fullImage != null);
-	}
-	
 	public void releaseImageResources() {
 		if (!imageWasSet()) {
 			return;
@@ -102,6 +98,10 @@ public class PuzzlesView extends View {
 				matrix.set(pos, null);
 			}
 		});
+	}
+	
+	private boolean imageWasSet() {
+		return (fullImage != null);
 	}
 	
 	private void setDimension(Dimension dim) {
