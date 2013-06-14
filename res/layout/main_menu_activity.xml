@@ -3,7 +3,7 @@
     android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".menus.MainMenuActivity" >
+    tools:context=".MainActivityRefactoring" >
 
     <TextView
         android:id="@+id/tvPlay"
@@ -59,41 +59,40 @@
         android:textSize="@dimen/text_size" />
 
     <ImageView
-        android:id="@+id/ivPlay"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="@dimen/icon_margin_left"
-        android:layout_marginTop="@dimen/icon_margin_top"
-        android:scaleType="fitXY"
-        android:src="@drawable/play" />
-
-    <ImageView
-        android:id="@+id/ivLoad"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
-        android:layout_below="@+id/ivPlay"
+        android:id="@+id/ivPaid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/ivRating"
+        android:layout_below="@+id/ivRating"
         android:layout_marginTop="@dimen/icon_between_margin"
-        android:layout_toLeftOf="@+id/tvPlay"
-        android:src="@drawable/load" />
+        android:src="@drawable/dollar" />
 
     <ImageView
         android:id="@+id/ivRating"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/ivLoad"
         android:layout_marginTop="@dimen/icon_between_margin"
         android:layout_toLeftOf="@+id/tvPlay"
         android:src="@drawable/rating" />
 
     <ImageView
-        android:id="@+id/ivPaid"
-        android:layout_width="@dimen/icon_size"
-        android:layout_height="@dimen/icon_size"
-        android:layout_below="@+id/ivRating"
+        android:id="@+id/ivLoad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ivRating"
+        android:layout_below="@+id/ivPlay"
         android:layout_marginTop="@dimen/icon_between_margin"
-        android:layout_toLeftOf="@+id/tvPlay"
-        android:src="@drawable/dollar" />
+        android:src="@drawable/load" />
+
+    <ImageView
+        android:id="@+id/ivPlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/icon_margin_left"
+        android:layout_marginTop="@dimen/icon_margin_top"
+        android:src="@drawable/play" />
 
 </RelativeLayout>
