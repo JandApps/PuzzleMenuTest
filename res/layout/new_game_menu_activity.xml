@@ -55,7 +55,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="21dp"
         android:alpha="1"
-        android:src="@drawable/gallery" />
+        android:src="@drawable/gallery_stateable_image" />
 
     <TextView
         android:id="@+id/tvGallery"
@@ -65,7 +65,7 @@
         android:layout_marginTop="18dp"
         android:layout_toRightOf="@+id/linearLayout1"
         android:text="@string/gallery"
-        android:textColor="@color/gallery_text_color"
+        android:textColor="@color/gallery_stateable_text_color"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <HorizontalScrollView

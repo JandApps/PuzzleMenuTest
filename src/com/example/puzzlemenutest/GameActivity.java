@@ -1,10 +1,10 @@
 package com.example.puzzlemenutest;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,11 +35,19 @@ public class GameActivity extends Activity {
 		imageView = (ImageView) findViewById(R.id.imageView);
 	}
 
-	@SuppressLint("NewApi")
 	private void setPreview() {
 		Bitmap bitmap = (Bitmap) SaverLoader.load("bitmap");
 		Drawable drawable = new BitmapDrawable(getResources(), bitmap);
-		imageView.setBackground(drawable);
+		setPreview(drawable);
+	}
+
+	@SuppressWarnings("deprecation")
+	private void setPreview(Drawable drawable) {
+		if (Build.VERSION.SDK_INT < 16) {
+			imageView.setBackgroundDrawable(drawable);
+		} else {
+			imageView.setBackground(drawable);
+		}
 	}
 
 	private void setListeners() {
