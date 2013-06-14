@@ -9,16 +9,17 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.puzzlemenutest.util.Dimension;
 
 public class GameActivity extends Activity {
-	private TextView textView;
-	private ImageView imageView;
+	private ImageView fullImageView;
 	private PuzzlesView puzzlesView;
+	private ImageButton toPuzzlesButton;
+	private ImageButton toFullImageButton;
 	private boolean gameStarted;
 
 	@Override
@@ -32,8 +33,9 @@ public class GameActivity extends Activity {
 
 	private void findViews() {
 		puzzlesView = (PuzzlesView) findViewById(R.id.puzzlesView);
-		textView = (TextView) findViewById(R.id.textView);
-		imageView = (ImageView) findViewById(R.id.imageView);
+		fullImageView = (ImageView) findViewById(R.id.imageView);
+		toPuzzlesButton = (ImageButton) findViewById(R.id.toPuzzlesButton);
+		toFullImageButton = (ImageButton) findViewById(R.id.toFullImageButton);
 	}
 
 	private void setPreview() {
@@ -46,26 +48,31 @@ public class GameActivity extends Activity {
 	@SuppressWarnings("deprecation")
 	private void setPreview(Drawable drawable) {
 		if (Build.VERSION.SDK_INT < 16) {
-			imageView.setBackgroundDrawable(drawable);
+			fullImageView.setBackgroundDrawable(drawable);
 		} else {
-			imageView.setBackground(drawable);
+			fullImageView.setBackground(drawable);
 		}
 	}
 
 	private void setListeners() {
-		imageView.setOnClickListener(new OnClickListener() {
+		puzzlesView.addOnPuzzleAssembledListener(new OnPuzzleAssembledListener() {
+			@Override
+			public void onGameFinished() {
+				onPuzzleAssembled();
+			}
+		});
+		toPuzzlesButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				onStartGame();
 			}
 		});
-		puzzlesView
-				.addOnPuzzleAssembledListener(new OnPuzzleAssembledListener() {
-					@Override
-					public void onGameFinished() {
-						onPuzzleAssembled();
-					}
-				});
+		toFullImageButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				onReturnToFullImage();
+			}
+		});
 	}
 
 	private void onStartGame() {
@@ -77,8 +84,8 @@ public class GameActivity extends Activity {
 	}
 
 	private void resetScreen(int previewVisibility, int puzzlesVisibility) {
-		changeVisibility(previewVisibility, textView, imageView);
-		changeVisibility(puzzlesVisibility, puzzlesView);
+		changeVisibility(previewVisibility, fullImageView, toPuzzlesButton);
+		changeVisibility(puzzlesVisibility, puzzlesView, toFullImageButton);
 	}
 
 	private void setPuzzles() {
@@ -93,14 +100,18 @@ public class GameActivity extends Activity {
 		}
 	}
 
+	private void onPuzzleAssembled() {
+		Toast.makeText(GameActivity.this, "Excellent", Toast.LENGTH_SHORT).show();
+		gameStarted = false;
+		onPreview();
+	}
+
 	private void onPreview() {
 		resetScreen(View.VISIBLE, View.INVISIBLE);
 	}
+	
 
-	private void onPuzzleAssembled() {
-		Toast.makeText(GameActivity.this, "Excellent", Toast.LENGTH_SHORT)
-				.show();
-		puzzlesView.mix();
+	private void onReturnToFullImage() {
 		onPreview();
 	}
 

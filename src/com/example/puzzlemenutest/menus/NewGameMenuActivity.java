@@ -62,9 +62,15 @@ public class NewGameMenuActivity extends AbstractMenuActivity {
 	}
 
 	public void startGame(int imageId) {
-		Dimension dim = dimensionByCurrentDifficulty();
 		Bitmap bitmap = BitmapFactory.decodeResource(getResources(), imageId);
-		startGame(bitmap, dim);
+		startGame(bitmap);
+	}
+
+	private void startGame(Bitmap bitmap) {
+		SaverLoader.save("bitmap", bitmap);
+		SaverLoader.save("dim", dimensionByCurrentDifficulty());
+		Intent intent = new Intent(this, GameActivity.class);
+		startActivity(intent);
 	}
 
 	private Dimension dimensionByCurrentDifficulty() {
@@ -78,13 +84,6 @@ public class NewGameMenuActivity extends AbstractMenuActivity {
 		RadioButton radioButton = (RadioButton) radioGroup.findViewById(checkedId);
 		String difficultyName = radioButton.getText().toString();
 		return difficultyName;
-	}
-
-	private void startGame(Bitmap bitmap, Dimension dim) {
-		SaverLoader.save("bitmap", bitmap);
-		SaverLoader.save("dim", dim);
-		Intent intent = new Intent(this, GameActivity.class);
-		startActivity(intent);
 	}
 
 	public void onGallery() {
