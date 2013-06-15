@@ -1,4 +1,4 @@
-package com.example.puzzlemenutest;
+package com.example.puzzlemenutest.menus;
 
 public class PaymentUtils {
 

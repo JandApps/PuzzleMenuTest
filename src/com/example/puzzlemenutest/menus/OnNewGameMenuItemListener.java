@@ -6,7 +6,6 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
-import com.example.puzzlemenutest.PaymentUtils;
 import com.example.puzzlemenutest.R;
 
 public class OnNewGameMenuItemListener implements OnClickListener {

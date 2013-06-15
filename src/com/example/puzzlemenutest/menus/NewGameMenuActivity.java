@@ -14,12 +14,11 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.puzzlemenutest.DimensionLoader;
-import com.example.puzzlemenutest.FullImageActivity;
-import com.example.puzzlemenutest.PaymentUtils;
 import com.example.puzzlemenutest.R;
-import com.example.puzzlemenutest.SaverLoader;
-import com.example.puzzlemenutest.util.Dimension;
+import com.example.puzzlemenutest.game.FullImageActivity;
+import com.example.puzzlemenutest.gameutils.DimensionLoader;
+import com.example.puzzlemenutest.gameutils.SaverLoader;
+import com.example.puzzlemenutest.utils.Dimension;
 
 public class NewGameMenuActivity extends Activity {
 

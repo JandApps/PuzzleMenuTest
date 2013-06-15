@@ -1,4 +1,4 @@
-package com.example.puzzlemenutest;
+package com.example.puzzlemenutest.game;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+
+import com.example.puzzlemenutest.R;
+import com.example.puzzlemenutest.gameutils.SaverLoader;
 
 public class FullImageActivity extends Activity {
 	private ImageView fullImageView;

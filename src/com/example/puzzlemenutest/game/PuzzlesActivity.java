@@ -1,11 +1,15 @@
-package com.example.puzzlemenutest;
+package com.example.puzzlemenutest.game;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.puzzlemenutest.util.Dimension;
+import com.example.puzzlemenutest.R;
+import com.example.puzzlemenutest.gameutils.SaverLoader;
+import com.example.puzzlemenutest.puzzlesview.OnPuzzleAssembledListener;
+import com.example.puzzlemenutest.puzzlesview.PuzzlesView;
+import com.example.puzzlemenutest.utils.Dimension;
 
 public class PuzzlesActivity extends Activity {
 

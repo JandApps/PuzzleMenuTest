@@ -1,11 +1,11 @@
-package com.example.puzzlemenutest;
+package com.example.puzzlemenutest.gameutils;
 import java.util.HashMap;
 import java.util.Map;
 
 import android.content.res.Resources;
 
 import com.example.puzzlemenutest.R;
-import com.example.puzzlemenutest.util.Dimension;
+import com.example.puzzlemenutest.utils.Dimension;
 
 public class DimensionLoader {
 
