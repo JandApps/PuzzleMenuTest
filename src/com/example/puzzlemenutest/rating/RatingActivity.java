@@ -1,12 +1,11 @@
 package com.example.puzzlemenutest.rating;
 
-import com.example.puzzlemenutest.R;
-import com.example.puzzlemenutest.R.layout;
-import com.example.puzzlemenutest.R.menu;
-
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
+
+import com.example.puzzlemenutest.R;
+
 
 public class RatingActivity extends Activity {
 
