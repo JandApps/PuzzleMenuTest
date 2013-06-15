@@ -33,6 +33,10 @@
             android:name="com.example.puzzlemenutest.game.PuzzlesActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
+        <activity
+            android:name="com.example.puzzlemenutest.rating.RatingActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
     </application>
 
 </manifest>

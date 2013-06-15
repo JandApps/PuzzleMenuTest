@@ -21,22 +21,7 @@ public class OnMainMenuItemClickListener implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		animateItem(v);
-		doAction(v);
-	}
-
-	private void animateItem(View v) {
-		switch (v.getId()) {
-		case R.id.playItem:
-		case R.id.loadItem:
-		case R.id.ratingItem:		
-		case R.id.paidItem:
-			v.startAnimation(anim);
-			break;
-		}
-	}
-	
-	private void doAction(View v) {
+		v.startAnimation(anim);
 		switch (v.getId()) {
 		case R.id.playItem:
 			onPlayClick();
@@ -55,7 +40,7 @@ public class OnMainMenuItemClickListener implements OnClickListener {
 			break;
 		}
 	}
-
+	
 	private void onPlayClick() {
 		Intent intent = new Intent(context, NewGameMenuActivity.class);
 		context.startActivity(intent);

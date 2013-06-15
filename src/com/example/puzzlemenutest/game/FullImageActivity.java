@@ -24,7 +24,6 @@ public class FullImageActivity extends Activity {
 		setContentView(R.layout.fullimage_activity);
 		fullImageView = (ImageView) findViewById(R.id.imageView);
 		setPreview();
-		SaverLoader.save("StartGame", Boolean.FALSE);
 		fullImageView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
