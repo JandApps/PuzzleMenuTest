@@ -26,7 +26,11 @@
             android:theme="@style/AppThemeCustomFont" >
         </activity>
         <activity
-            android:name="com.example.puzzlemenutest.GameActivity"
+            android:name="com.example.puzzlemenutest.FullImageActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="com.example.puzzlemenutest.PuzzlesActivity"
             android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
         </activity>
     </application>
