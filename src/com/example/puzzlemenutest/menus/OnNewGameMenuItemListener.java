@@ -4,7 +4,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
+import com.example.puzzlemenutest.PaymentUtils;
 import com.example.puzzlemenutest.R;
 
 public class OnNewGameMenuItemListener implements OnClickListener {
@@ -19,9 +21,18 @@ public class OnNewGameMenuItemListener implements OnClickListener {
 	public void onClick(View v) {		
 		switch (v.getId()) {
 		case R.id.ivGallery: 
+			onGalleryClick(v);
+			break;
+		}
+	}
+
+	private void onGalleryClick(View v) {
+		if (PaymentUtils.extraFeaturesHaveBeenPaid()) {
 			v.startAnimation(anim);
 			activity.onGallery();
-			break;
+		} else {
+			Toast.makeText(activity, "Availabled only for gold account", Toast.LENGTH_SHORT)
+				.show();
 		}
 	}
 }

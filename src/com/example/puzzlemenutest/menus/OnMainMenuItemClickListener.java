@@ -18,38 +18,61 @@ public class OnMainMenuItemClickListener implements OnClickListener {
 		this.context = context;
 		anim = AnimationUtils.loadAnimation(context, R.anim.click_anim);
 	}
-			
 
 	@Override
-	public void onClick(View v) {		
-		v.startAnimation(anim);
-		
-		switch (v.getId()) {
-		case R.id.tvPlay:
-		case R.id.ivPlay: 
-			Intent intent = new Intent(context, NewGameMenuActivity.class);
-			context.startActivity(intent);
-			break;
-		
-		
-		case R.id.tvLoad:
-		case R.id.ivLoad:
-			Toast.makeText(context, "Loading game...", Toast.LENGTH_SHORT).show();
-			break;
-		
-		
-		case R.id.tvRating:
-		case R.id.ivRating:
-			Toast.makeText(context, "Showing rating...", Toast.LENGTH_SHORT).show();
-			break;
-		
-		
-		case R.id.tvPaid:
-		case R.id.ivPaid:
-			Toast.makeText(context, "Showing paid features...", Toast.LENGTH_SHORT).show();
-			break;
-		
+	public void onClick(View v) {
+		animateItem(v);
+		doAction(v);
+	}
 
+	private void animateItem(View v) {
+		switch (v.getId()) {
+		case R.id.playItem:
+		case R.id.loadItem:
+		case R.id.ratingItem:		
+		case R.id.paidItem:
+			v.startAnimation(anim);
+			break;
 		}
+	}
+	
+	private void doAction(View v) {
+		switch (v.getId()) {
+		case R.id.playItem:
+			onPlayClick();
+			break;
+		
+		case R.id.loadItem:
+			onLoadClick();
+			break;
+
+		case R.id.ratingItem:
+			onRatingClick();
+			break;
+		
+		case R.id.paidItem:
+			onPaidClick();
+			break;
+		}
+	}
+
+	private void onPlayClick() {
+		Intent intent = new Intent(context, NewGameMenuActivity.class);
+		context.startActivity(intent);
+	}
+
+	private void onLoadClick() {
+		// TODO Auto-generated method stub
+		Toast.makeText(context, "Loading game...", Toast.LENGTH_SHORT).show();
+	}
+	
+	private void onRatingClick() {
+		// TODO Auto-generated method stub
+		Toast.makeText(context, "Showing rating...", Toast.LENGTH_SHORT).show();
+	}
+
+	private void onPaidClick() {
+		// TODO Auto-generated method stub
+		Toast.makeText(context, "Showing paid features...", Toast.LENGTH_SHORT).show();
 	}
 }

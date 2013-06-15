@@ -35,6 +35,5 @@ public class OnPickImageListener implements OnClickListener {
 			activity.startGame(R.drawable.nature_3);
 			break;
 		}
-	}	
-
+	}
 }

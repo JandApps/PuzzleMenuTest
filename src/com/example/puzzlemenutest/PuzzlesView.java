@@ -96,6 +96,7 @@ public class PuzzlesView extends View {
 				Bitmap bitmap = matrix.get(pos);
 				bitmap.recycle();
 				matrix.set(pos, null);
+				startPuzzles.set(pos, null);
 			}
 		});
 	}

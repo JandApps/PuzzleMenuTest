@@ -1,34 +1,32 @@
 package com.example.puzzlemenutest.menus;
 
+import android.app.Activity;
+import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 
 import com.example.puzzlemenutest.PaymentUtils;
 import com.example.puzzlemenutest.R;
 
-public class MainMenuActivity extends AbstractMenuActivity {
+public class MainMenuActivity extends Activity {
 
-	private int[] textViewsIds = { R.id.tvPlay, R.id.tvLoad, R.id.tvRating, R.id.tvPaid };
-	private int[] imageViewsIds = { R.id.ivPlay, R.id.ivLoad, R.id.ivRating, R.id.ivPaid };
+	private static final int[] itemsIds = new int[] {
+			R.id.playItem, R.id.loadItem, R.id.ratingItem, R.id.paidItem
+	};
 
 	@Override
-	protected int getLayoutId() {
-		return R.layout.main_menu_activity;
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main_menu_activity);
+		
+		initMenuItems();
 	}
 
-	@Override
-	protected OnClickListener createOnClickListener() {
-		return new OnMainMenuItemClickListener(this);
-	}
-
-	@Override
-	protected int[] getMenuItemsTextViewsIds() {
-		return textViewsIds;
-	}
-
-	@Override
-	protected int[] getMenuItemsImagetViewsIds() {
-		return imageViewsIds;
+	private void initMenuItems() {
+		OnClickListener listener = new OnMainMenuItemClickListener(this);
+		for (int i = 0; i < itemsIds.length; ++i) {
+			findViewById(itemsIds[i]).setOnClickListener(listener);
+		}
 	}
 
 	@Override
@@ -40,8 +38,6 @@ public class MainMenuActivity extends AbstractMenuActivity {
 	}
 
 	private void hidePaidFeaturesItem() {
-		findViewById(R.id.ivPaid).setVisibility(View.INVISIBLE);
-		findViewById(R.id.tvPaid).setVisibility(View.INVISIBLE);
+		findViewById(R.id.paidItem).setVisibility(View.INVISIBLE);
 	}
-
 }

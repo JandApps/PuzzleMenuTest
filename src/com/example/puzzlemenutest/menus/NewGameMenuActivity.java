@@ -2,54 +2,50 @@ package com.example.puzzlemenutest.menus;
 
 import java.io.File;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.View.OnClickListener;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.puzzlemenutest.DimensionLoader;
-import com.example.puzzlemenutest.GameActivity;
+import com.example.puzzlemenutest.FullImageActivity;
 import com.example.puzzlemenutest.PaymentUtils;
 import com.example.puzzlemenutest.R;
 import com.example.puzzlemenutest.SaverLoader;
 import com.example.puzzlemenutest.util.Dimension;
 
-public class NewGameMenuActivity extends AbstractMenuActivity {
-	private static final int PICK_IMAGE = 0;
-	private int[] menuItemsTextViewsIds = {R.id.textView};
-	private int[] menuItemsImageViewsIds = { R.id.ivGallery };
-	private int[] imageViewIds = { R.id.ivPreview_1, R.id.ivPreview_2,
-			R.id.ivPreview_3, R.id.ivPreview_4, R.id.ivPreview_5 };
+public class NewGameMenuActivity extends Activity {
+
+	private final int[] previewsImageViewsIds = {
+		R.id.ivPreview_1, R.id.ivPreview_2,
+		R.id.ivPreview_3, R.id.ivPreview_4,
+		R.id.ivPreview_5
+	};
+	
+	private final int galleryMenuItemId = R.id.ivGallery;
+	private final int PICK_IMAGE = 1234;
+	private OnClickListener listener;
 
 	@Override
-	protected int getLayoutId() {
-		return R.layout.new_game_menu_activity;
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.new_game_menu_activity);
+		
+		listener = new OnNewGameMenuItemListener(this);
+		setListeners();
 	}
 
-	@Override
-	protected OnClickListener createOnClickListener() {
-		return new OnNewGameMenuItemListener(this);
-	}
-
-	@Override
-	protected int[] getMenuItemsTextViewsIds() {
-		return menuItemsTextViewsIds;
-	}
-
-	@Override
-	protected int[] getMenuItemsImagetViewsIds() {
-		return menuItemsImageViewsIds;
-	}
-
-	@Override
-	protected void otherActions() {
+	private void setListeners() {
+		findViewById(galleryMenuItemId).setOnClickListener(listener);
 		OnPickImageListener listener = new OnPickImageListener(this);
-		for (int id : imageViewIds) {
+		for (int id : previewsImageViewsIds) {
 			findViewById(id).setOnClickListener(listener);
 		}
 	}
@@ -74,7 +70,7 @@ public class NewGameMenuActivity extends AbstractMenuActivity {
 	private void startGame(Bitmap bitmap) {
 		SaverLoader.save("bitmap", bitmap);
 		SaverLoader.save("dim", dimensionByCurrentDifficulty());
-		Intent intent = new Intent(this, GameActivity.class);
+		Intent intent = new Intent(this, FullImageActivity.class);
 		startActivity(intent);
 	}
 
