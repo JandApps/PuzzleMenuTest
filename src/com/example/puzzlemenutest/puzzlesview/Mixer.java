@@ -1,10 +1,10 @@
-package com.example.puzzlemenutest;
+package com.example.puzzlemenutest.puzzlesview;
 import java.util.Random;
 
 import android.graphics.Bitmap;
 
-import com.example.puzzlemenutest.util.Matrix;
-import com.example.puzzlemenutest.util.Matrix.Position;
+import com.example.puzzlemenutest.utils.Matrix;
+import com.example.puzzlemenutest.utils.Matrix.Position;
 
 public class Mixer {
 	private Random random;

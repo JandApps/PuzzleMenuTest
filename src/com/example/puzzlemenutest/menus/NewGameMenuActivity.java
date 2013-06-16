@@ -9,42 +9,48 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import com.example.puzzlemenutest.DimensionLoader;
-import com.example.puzzlemenutest.FullImageActivity;
-import com.example.puzzlemenutest.PaymentUtils;
 import com.example.puzzlemenutest.R;
-import com.example.puzzlemenutest.SaverLoader;
-import com.example.puzzlemenutest.util.Dimension;
+import com.example.puzzlemenutest.game.FullImageActivity;
+import com.example.puzzlemenutest.gameutils.DimensionLoader;
+import com.example.puzzlemenutest.gameutils.SaverLoader;
+import com.example.puzzlemenutest.utils.Dimension;
 
-public class NewGameMenuActivity extends Activity {
+public class NewGameMenuActivity extends Activity implements OnClickListener {
 
-	private final int[] previewsImageViewsIds = {
+	private static final int[] previewsImageViewsIds = {
 		R.id.ivPreview_1, R.id.ivPreview_2,
 		R.id.ivPreview_3, R.id.ivPreview_4,
 		R.id.ivPreview_5
 	};
 	
-	private final int galleryMenuItemId = R.id.ivGallery;
-	private final int PICK_IMAGE = 1234;
-	private OnClickListener listener;
-
+	private static final int galleryMenuItemId = R.id.ivGallery;
+	
+	private static final int PICK_IMAGE = 1234;
+	
+	private Animation anim;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.new_game_menu_activity);
 		
-		listener = new OnNewGameMenuItemListener(this);
+		anim = AnimationUtils.loadAnimation(this, R.anim.click_anim);
 		setListeners();
 	}
 
 	private void setListeners() {
-		findViewById(galleryMenuItemId).setOnClickListener(listener);
-		OnPickImageListener listener = new OnPickImageListener(this);
+		ImageView galleryItem = (ImageView) findViewById(galleryMenuItemId);
+		galleryItem.setOnClickListener(this);
+		OnPickImageListener listener = new OnPickImageListener();
 		for (int id : previewsImageViewsIds) {
 			findViewById(id).setOnClickListener(listener);
 		}
@@ -88,6 +94,19 @@ public class NewGameMenuActivity extends Activity {
 		return difficultyName;
 	}
 
+	@Override
+	public void onClick(View v) {
+		if (v.getId() == R.id.ivGallery) {
+			if (PaymentUtils.extraFeaturesHaveBeenPaid()) {
+				v.startAnimation(anim);
+				onGallery();
+			} else {
+				Toast.makeText(this, "Availabled only for gold account", Toast.LENGTH_SHORT)
+					 .show();
+			}
+		}
+	}
+
 	void onGallery() {
 		Intent intent = new Intent();
 		intent.setType("image/*");
@@ -98,8 +117,7 @@ public class NewGameMenuActivity extends Activity {
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		if (resultCode == RESULT_OK && requestCode == PICK_IMAGE
-				&& data != null) {
+		if (resultCode == RESULT_OK && requestCode == PICK_IMAGE && data != null) {
 			Uri uri = data.getData();
 			if (uri != null) {
 				onImagePicked(uri);
@@ -120,9 +138,9 @@ public class NewGameMenuActivity extends Activity {
 	}
 
 	private String imageFilePathByUri(Uri uri) {
-		String[] projection = new String[] { android.provider.MediaStore.Images.ImageColumns.DATA };
-		Cursor cursor = getContentResolver().query(uri, projection, null, null,
-				null);
+		String column = android.provider.MediaStore.Images.ImageColumns.DATA;
+		String[] projection = new String[] { column };
+		Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
 		cursor.moveToFirst();
 		String imageFilePath = cursor.getString(0);
 		cursor.close();

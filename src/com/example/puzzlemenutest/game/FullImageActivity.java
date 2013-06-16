@@ -1,4 +1,4 @@
-package com.example.puzzlemenutest;
+package com.example.puzzlemenutest.game;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 
+import com.example.puzzlemenutest.R;
+import com.example.puzzlemenutest.gameutils.SaverLoader;
+
 public class FullImageActivity extends Activity {
 	private ImageView fullImageView;
 
@@ -21,7 +24,6 @@ public class FullImageActivity extends Activity {
 		setContentView(R.layout.fullimage_activity);
 		fullImageView = (ImageView) findViewById(R.id.imageView);
 		setPreview();
-		SaverLoader.save("StartGame", Boolean.FALSE);
 		fullImageView.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

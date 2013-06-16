@@ -17,7 +17,7 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
-    <style name="AppThemeCustomFont" parent="android:Theme.NoTitleBar.Fullscreen">
+    <style name="AppCustomTheme" parent="android:Theme.NoTitleBar.Fullscreen">
         <item name="android:textViewStyle">@style/CustomTextViewStyle</item>
         <item name="android:radioButtonStyle">@style/CustomRadioButtonStyle</item>
         <item name="android:background">@color/menu_background_color</item>

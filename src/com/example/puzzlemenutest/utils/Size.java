@@ -1,4 +1,4 @@
-package com.example.puzzlemenutest.util;
+package com.example.puzzlemenutest.utils;
 
 public class Size {
 	public final int width;

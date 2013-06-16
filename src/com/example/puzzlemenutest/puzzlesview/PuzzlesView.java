@@ -1,4 +1,4 @@
-package com.example.puzzlemenutest;
+package com.example.puzzlemenutest.puzzlesview;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -15,10 +15,10 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.example.puzzlemenutest.util.Dimension;
-import com.example.puzzlemenutest.util.Matrix;
-import com.example.puzzlemenutest.util.Matrix.Position;
-import com.example.puzzlemenutest.util.Size;
+import com.example.puzzlemenutest.utils.Dimension;
+import com.example.puzzlemenutest.utils.Matrix;
+import com.example.puzzlemenutest.utils.Size;
+import com.example.puzzlemenutest.utils.Matrix.Position;
 
 public class PuzzlesView extends View {
 	

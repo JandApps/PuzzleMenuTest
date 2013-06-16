@@ -1,11 +1,17 @@
-package com.example.puzzlemenutest;
+package com.example.puzzlemenutest.game;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.example.puzzlemenutest.util.Dimension;
+import com.example.puzzlemenutest.R;
+import com.example.puzzlemenutest.gameutils.SaverLoader;
+import com.example.puzzlemenutest.puzzlesview.OnPuzzleAssembledListener;
+import com.example.puzzlemenutest.puzzlesview.PuzzlesView;
+import com.example.puzzlemenutest.rating.RatingActivity;
+import com.example.puzzlemenutest.utils.Dimension;
 
 public class PuzzlesActivity extends Activity {
 
@@ -21,7 +27,8 @@ public class PuzzlesActivity extends Activity {
 			@Override
 			public void onGameFinished() {
 				Toast.makeText(PuzzlesActivity.this, "Excellent!", Toast.LENGTH_SHORT).show();
-				SaverLoader.save("StartGame", Boolean.FALSE);
+				Intent intent = new Intent(PuzzlesActivity.this, RatingActivity.class);
+				PuzzlesActivity.this.startActivity(intent);
 			}
 		});
 	}

@@ -1,4 +1,4 @@
-package com.example.puzzlemenutest;
+package com.example.puzzlemenutest.menus;
 
 public class PaymentUtils {
 
@@ -6,7 +6,7 @@ public class PaymentUtils {
 		// TODO: при добавлении возможности оплаты дополнительных функций
 		// добавить проверку, на самом ли деле пользователь этого устройства
 		// оплатил
-		return false;
+		return true;
 	}
 
 }
