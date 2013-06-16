@@ -32,7 +32,6 @@
     <style name="CustomRadioButtonStyle" parent="@android:style/Widget.CompoundButton.RadioButton">
         <item name="android:textColor">@color/menu_text_color</item>
         <item name="android:typeface">serif</item>
-        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

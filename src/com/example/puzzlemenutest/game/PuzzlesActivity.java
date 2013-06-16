@@ -13,7 +13,7 @@ import com.example.puzzlemenutest.puzzlesview.PuzzlesView;
 import com.example.puzzlemenutest.rating.RatingActivity;
 import com.example.puzzlemenutest.utils.Dimension;
 
-public class PuzzlesActivity extends Activity {
+public class PuzzlesActivity extends Activity implements OnPuzzleAssembledListener {
 
 	private PuzzlesView puzzlesView;
 	private boolean first = true;
@@ -23,16 +23,23 @@ public class PuzzlesActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_puzzles);
 		puzzlesView = (PuzzlesView) findViewById(R.id.puzzlesView);
-		puzzlesView.addOnPuzzleAssembledListener(new OnPuzzleAssembledListener() {
-			@Override
-			public void onGameFinished() {
-				Toast.makeText(PuzzlesActivity.this, "Excellent!", Toast.LENGTH_SHORT).show();
-				Intent intent = new Intent(PuzzlesActivity.this, RatingActivity.class);
-				PuzzlesActivity.this.startActivity(intent);
-			}
-		});
+		puzzlesView.addOnPuzzleAssembledListener(this);
 	}
 
+	@Override
+	public void onGameFinished() {
+		SaverLoader.save("GameFinished", Boolean.TRUE);
+		Toast.makeText(this, "Excellent!", Toast.LENGTH_SHORT).show();
+		Intent intent = new Intent(this, RatingActivity.class);
+		startActivityForResult(intent, 1234);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		finish();
+	}
+	
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
 		super.onWindowFocusChanged(hasFocus);

@@ -9,6 +9,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Toast;
 
 import com.example.puzzlemenutest.R;
+import com.example.puzzlemenutest.rating.RatingActivity;
 
 public class OnMainMenuItemClickListener implements OnClickListener {
 	private Context context;
@@ -52,8 +53,8 @@ public class OnMainMenuItemClickListener implements OnClickListener {
 	}
 	
 	private void onRatingClick() {
-		// TODO Auto-generated method stub
-		Toast.makeText(context, "Showing rating...", Toast.LENGTH_SHORT).show();
+		Intent intent = new Intent(context, RatingActivity.class);
+		context.startActivity(intent);
 	}
 
 	private void onPaidClick() {

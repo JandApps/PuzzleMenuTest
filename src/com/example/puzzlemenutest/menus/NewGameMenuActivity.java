@@ -76,6 +76,7 @@ public class NewGameMenuActivity extends Activity implements OnClickListener {
 	private void startGame(Bitmap bitmap) {
 		SaverLoader.save("bitmap", bitmap);
 		SaverLoader.save("dim", dimensionByCurrentDifficulty());
+		SaverLoader.save("GameFinished", Boolean.TRUE);
 		Intent intent = new Intent(this, FullImageActivity.class);
 		startActivity(intent);
 	}

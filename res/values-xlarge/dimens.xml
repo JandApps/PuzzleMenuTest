@@ -2,6 +2,7 @@
 <resources>
 
     <dimen name="text_size">75sp</dimen>
+    <dimen name="radio_text_size">57sp</dimen>
     <dimen name="margin_left">10dp</dimen>
     <dimen name="icon_margin_left">10dp</dimen>
     <dimen name="icon_margin_top">10dp</dimen>
